@@ -1,1 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To My Queen | Alishba Ahad</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@200;300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --deep-black: #080808;
+            --pink-glow: #ff2d75;
+            --soft-pink: #ff85a1;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 45, 117, 0.2);
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--deep-black);
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background Particles */
+        #particle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, #1a0a10 0%, #080808 100%);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 25px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(8,8,8,0.9), transparent);
+        }
+
+        .logo {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: var(--pink-glow);
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.3s;
+            font-weight: 300;
+        }
+
+        .nav-links a:hover {
+            color: var(--pink-glow);
+            text-shadow: 0 0 10px var(--pink-glow);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+
+        .hero h1 span {
+            color: var(--pink-glow);
+            display: block;
+            font-style: italic;
+        }
+
+        .hero p {
+            font-weight: 200;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--soft-pink);
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 2s forwards 0.5s;
+        }
+
+        /* Content Sections */
+        section {
+            padding: 100px 10%;
+            min-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            padding: 60px;
+            border-radius: 30px;
+            width: 100%;
+            max-width: 1000px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(255, 45, 117, 0.1);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: var(--pink-glow);
+        }
+
+        .content-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-weight: 300;
+            color: #ddd;
+        }
+
+        /* Grid for Exams/Work */
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .grid-item {
+            border-left: 2px solid var(--pink-glow);
+            padding-left: 20px;
+        }
+
+        .grid-item h3 {
+            margin-bottom: 10px;
+            color: var(--soft-pink);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        /* Scroll Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Floating Hearts UI Element */
+        .floating-heart {
+            position: absolute;
+            color: var(--pink-glow);
+            opacity: 0.2;
+            pointer-events: none;
+            animation: floatUp 10s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            50% { opacity: 0.2; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 15px 35px;
+            border: 1px solid var(--pink-glow);
+            background: transparent;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.4s;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background: var(--pink-glow);
+            box-shadow: 0 0 20px var(--pink-glow);
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .grid-container { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 3.5rem; }
+            nav { padding: 20px; }
+            .glass-card { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="particle-container"></div>
+
+    <nav>
+        <a href="#" class="logo">A.A</a>
+        <div class="nav-links">
+            <a href="#about">The Woman</a>
+            <a href="#work">Her Dedication</a>
+            <a href="#exams">Support</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <p>A Professional Tribute to</p>
+        <h1>Alishba <span>Ahad</span></h1>
+        <a href="#about" class="btn">Explore Her World</a>
+    </section>
+
+    <section id="about" class="reveal">
+        <div class="glass-card">
+            <h2 class="section-title">The Strength Behind Us</h2>
+            <p class="content-text">
+                Some people see a hardworking student, but I see a queen building an empire. 
+                Alishba, the way you balance your dreams with such elegance is nothing short of professional mastery. 
+                Every day, you wake up and choose to work hard—not just for yourself, but for the future we are 
+                painting together. You are my greatest inspiration and my most beautiful reality.
+            </p>
+        </div>
+    </section>
+
+    <section id="work" class="reveal">
+        <div class="glass-card">
+            <h2 class="section-title">Endless Dedication</h2>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <h3>The Daily Hustle</h3>
+                    <p class="content-text">Your discipline is unmatched. While the world sleeps, you are shaping our destiny with your hard work.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>The Purpose</h3>
+                    <p class="content-text">Every effort you put in today is a foundation for the "us" of tomorrow. Thank you for never giving up.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="exams" class="reveal">
+        <div class="glass-card" style="border-color: var(--pink-glow);">
+            <h2 class="section-title">The Exam Season</h2>
+            <p class="content-text">
+                I know the weight of the books and the stress of the exams feels heavy right now. 
+                But remember, Alishba: you are more brilliant than any grade on a paper. 
+                Take a deep breath, my love. You’ve studied hard, you’ve prepared well, and 
+                you have me standing right behind you, cheering the loudest. 
+                <br><br>
+                <span style="color: var(--pink-glow); font-family: 'Dancing Script'; font-size: 1.8rem;">
+                    You’ve got this, and I’ve got you.
+                </span>
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <p>DESIGNED EXCLUSIVELY FOR ALISHBA AHAD | &copy; 2024</p>
+    </footer>
+
+    <script>
+        // --- Scroll Reveal Logic ---
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+
+        // --- Floating Hearts Background ---
+        function createHeart() {
+            const container = document.getElementById('particle-container');
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤';
+            heart.classList.add('floating-heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.animationDuration = Math.random() * 5 + 5 + 's';
+            container.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
