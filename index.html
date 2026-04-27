@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>To My Queen | Alishba Ahad</title>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@200;300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
@@ -28,6 +28,7 @@
             color: #ffffff;
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
+            width: 100%;
         }
 
         /* Animated Background Particles */
@@ -46,17 +47,17 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 25px 50px;
+            padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            background: linear-gradient(to bottom, rgba(8,8,8,0.9), transparent);
+            background: linear-gradient(to bottom, rgba(8,8,8,0.95), transparent);
         }
 
         .logo {
             font-family: 'Dancing Script', cursive;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: var(--pink-glow);
             text-decoration: none;
         }
@@ -64,17 +65,12 @@
         .nav-links a {
             color: white;
             text-decoration: none;
-            margin-left: 30px;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
+            margin-left: 15px;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
             text-transform: uppercase;
             transition: 0.3s;
             font-weight: 300;
-        }
-
-        .nav-links a:hover {
-            color: var(--pink-glow);
-            text-shadow: 0 0 10px var(--pink-glow);
         }
 
         /* Hero Section */
@@ -90,7 +86,7 @@
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(3rem, 8vw, 6rem);
+            font-size: clamp(2.5rem, 10vw, 6rem);
             margin-bottom: 10px;
             line-height: 1.1;
         }
@@ -103,18 +99,19 @@
 
         .hero p {
             font-weight: 200;
-            letter-spacing: 4px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--soft-pink);
             margin-bottom: 30px;
+            font-size: 0.8rem;
             opacity: 0;
             animation: fadeIn 2s forwards 0.5s;
         }
 
         /* Content Sections */
         section {
-            padding: 100px 10%;
-            min-height: 80vh;
+            padding: 80px 5%;
+            min-height: 60vh;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -123,31 +120,25 @@
         .glass-card {
             background: var(--glass);
             backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px); /* Safari support */
             border: 1px solid var(--glass-border);
-            padding: 60px;
-            border-radius: 30px;
+            padding: 40px 25px; /* Responsive padding */
+            border-radius: 20px;
             width: 100%;
             max-width: 1000px;
-            position: relative;
-            overflow: hidden;
             transition: transform 0.4s ease;
-        }
-
-        .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(255, 45, 117, 0.1);
         }
 
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 30px;
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            margin-bottom: 20px;
             color: var(--pink-glow);
         }
 
         .content-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: 1rem;
+            line-height: 1.7;
             font-weight: 300;
             color: #ddd;
         }
@@ -155,29 +146,29 @@
         /* Grid for Exams/Work */
         .grid-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 40px;
+            grid-template-columns: 1fr; /* Default mobile-first */
+            gap: 25px;
+            margin-top: 30px;
         }
 
         .grid-item {
             border-left: 2px solid var(--pink-glow);
-            padding-left: 20px;
+            padding-left: 15px;
         }
 
         .grid-item h3 {
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             color: var(--soft-pink);
             text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
         }
 
         /* Scroll Animation */
         .reveal {
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s ease-out;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
         }
 
         .reveal.active {
@@ -185,59 +176,62 @@
             transform: translateY(0);
         }
 
-        /* Floating Hearts UI Element */
+        /* Floating Hearts */
         .floating-heart {
             position: absolute;
             color: var(--pink-glow);
             opacity: 0.2;
             pointer-events: none;
-            animation: floatUp 10s linear infinite;
+            animation: floatUp 8s linear infinite;
         }
 
         @keyframes floatUp {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            50% { opacity: 0.2; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+            0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+            50% { opacity: 0.3; }
+            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
         }
 
         @keyframes fadeIn {
             to { opacity: 1; }
         }
 
-        /* Buttons */
+        /* Button */
         .btn {
-            padding: 15px 35px;
+            padding: 12px 28px;
             border: 1px solid var(--pink-glow);
             background: transparent;
             color: white;
             text-decoration: none;
             border-radius: 50px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             transition: 0.4s;
             display: inline-block;
-            margin-top: 20px;
-        }
-
-        .btn:hover {
-            background: var(--pink-glow);
-            box-shadow: 0 0 20px var(--pink-glow);
         }
 
         footer {
             text-align: center;
-            padding: 50px;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            color: #555;
+            padding: 40px 20px;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            color: #666;
         }
 
-        @media (max-width: 768px) {
-            .grid-container { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 3.5rem; }
-            nav { padding: 20px; }
-            .glass-card { padding: 30px; }
+        /* --- MEDIA QUERIES FOR LARGER SCREENS --- */
+        @media (min-width: 768px) {
+            nav { padding: 25px 50px; }
+            .nav-links a { font-size: 0.8rem; margin-left: 30px; }
+            .hero p { font-size: 1rem; letter-spacing: 4px; }
+            .glass-card { padding: 60px; }
+            .grid-container { grid-template-columns: 1fr 1fr; }
+            section { padding: 100px 10%; }
+        }
+
+        /* Prevent text overflow on very small phones */
+        @media (max-width: 350px) {
+            .nav-links { display: none; } /* Hide links on tiny phones to save space */
+            .hero h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -249,15 +243,17 @@
         <a href="#" class="logo">A.A</a>
         <div class="nav-links">
             <a href="#about">The Woman</a>
-            <a href="#work">Her Dedication</a>
+            <a href="#work">Dedication</a>
             <a href="#exams">Support</a>
         </div>
     </nav>
 
     <section class="hero">
-        <p>A Professional Tribute to</p>
+        <p>A Tribute to My Love</p>
         <h1>Alishba <span>Ahad</span></h1>
-        <a href="#about" class="btn">Explore Her World</a>
+        <div style="margin-top: 20px;">
+            <a href="#about" class="btn">Click to Begin</a>
+        </div>
     </section>
 
     <section id="about" class="reveal">
@@ -267,7 +263,7 @@
                 Some people see a hardworking student, but I see a queen building an empire. 
                 Alishba, the way you balance your dreams with such elegance is nothing short of professional mastery. 
                 Every day, you wake up and choose to work hard—not just for yourself, but for the future we are 
-                painting together. You are my greatest inspiration and my most beautiful reality.
+                painting together. You are my greatest inspiration.
             </p>
         </div>
     </section>
@@ -278,11 +274,11 @@
             <div class="grid-container">
                 <div class="grid-item">
                     <h3>The Daily Hustle</h3>
-                    <p class="content-text">Your discipline is unmatched. While the world sleeps, you are shaping our destiny with your hard work.</p>
+                    <p class="content-text">Your discipline is unmatched. While the world sleeps, you are shaping our destiny with your tireless effort.</p>
                 </div>
                 <div class="grid-item">
                     <h3>The Purpose</h3>
-                    <p class="content-text">Every effort you put in today is a foundation for the "us" of tomorrow. Thank you for never giving up.</p>
+                    <p class="content-text">Every late night and early morning is a foundation for the "us" of tomorrow. Thank you for your strength.</p>
                 </div>
             </div>
         </div>
@@ -294,10 +290,10 @@
             <p class="content-text">
                 I know the weight of the books and the stress of the exams feels heavy right now. 
                 But remember, Alishba: you are more brilliant than any grade on a paper. 
-                Take a deep breath, my love. You’ve studied hard, you’ve prepared well, and 
-                you have me standing right behind you, cheering the loudest. 
+                Take a deep breath, my love. You’ve prepared well, and 
+                I am standing right behind you, cheering the loudest. 
                 <br><br>
-                <span style="color: var(--pink-glow); font-family: 'Dancing Script'; font-size: 1.8rem;">
+                <span style="color: var(--pink-glow); font-family: 'Dancing Script'; font-size: 1.5rem; display: block; margin-top: 10px;">
                     You’ve got this, and I’ve got you.
                 </span>
             </p>
@@ -305,7 +301,7 @@
     </section>
 
     <footer>
-        <p>DESIGNED EXCLUSIVELY FOR ALISHBA AHAD | &copy; 2024</p>
+        <p>DESIGNED EXCLUSIVELY FOR ALISHBA AHAD<br>&copy; 2024 - FOR US</p>
     </footer>
 
     <script>
@@ -315,13 +311,14 @@
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
+                var elementVisible = 100;
                 if (elementTop < windowHeight - elementVisible) {
                     reveals[i].classList.add("active");
                 }
             }
         }
         window.addEventListener("scroll", reveal);
+        window.addEventListener("load", reveal); // Run on load to check initial view
 
         // --- Floating Hearts Background ---
         function createHeart() {
@@ -330,15 +327,18 @@
             heart.innerHTML = '❤';
             heart.classList.add('floating-heart');
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
-            heart.style.animationDuration = Math.random() * 5 + 5 + 's';
+            heart.style.fontSize = Math.random() * 15 + 10 + 'px';
+            heart.style.animationDuration = Math.random() * 4 + 4 + 's';
             container.appendChild(heart);
             
             setTimeout(() => {
                 heart.remove();
             }, 8000);
         }
-        setInterval(createHeart, 300);
+        
+        // Fewer hearts on mobile to save battery/performance
+        const heartInterval = window.innerWidth < 768 ? 600 : 300;
+        setInterval(createHeart, heartInterval);
     </script>
 </body>
 </html>
